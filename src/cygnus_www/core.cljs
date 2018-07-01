@@ -31,38 +31,38 @@
   [:div
    [:header
     [:section#top
-     [:h1 [:a {:href "/"} "Cygnus"]]
+     [:h1 [:a {:href "/"} "FASTER"]]
      [:nav
       [:a {:href "/tutorial"} "Tutorial"]
       [:a {:href "https://docs.adamniederer.com"} "Docs"]
       [:a {:href "https://github.com/AdamNiederer/faster"} "Code"]]]
     [:section#banner
-     [:h1 "Light speed code"]
+     [:h1 "Turbocharged Code"]
      [:p "Speed up your data processing tasks without sacrificing readability"]
      [:span.release "Release 0.5.0"]
      [:section#banner-features
-      [:div [:div.icon.lg] [:h2 "Efficient"]
-       [:span "Cygnus is a " [:em "zero-overhead"] " library, and uses every trick in the book to save cycles."]]
-      [:div [:div.icon.lg] [:h2 "Portable"]
-       [:span "Cygnus compiles and runs on " [:em "any architecture"] ", letting you write once and run anywhere."]]
-      [:div [:div.icon.lg] [:h2 "Usable"]
-       [:span "Waste no developer time. Cygnus handles the caveats of " [:em "vector algorithms"] " for you."]]]]]
+      [:div [:div.icon.lg [:i.material-icons "whatshot"]] [:h2 "Efficient"]
+       [:span "Faster is a " [:em "zero-overhead"] " library, and uses every trick in the book to save cycles."]]
+      [:div [:div.icon.lg [:i.material-icons "devices_other"]] [:h2 "Portable"]
+       [:span "Faster compiles and runs on " [:em "any architecture"] ". Write it once, run it anywhere."]]
+      [:div [:div.icon.lg [:i.material-icons "mood"]] [:h2 "Usable"]
+       [:span "Waste no developer time. Faster handles the caveats of " [:em "vector algorithms"] " for you."]]]]]
    [:main
     [:section#tutorial
      [:div.tutorial-part
       [:div.tutorial-text
-       [:h1 "Boldly go"]
-       [:p "Cygnus makes prototyping SIMD code easy. Map reduce, and collect using Cygnus' vector-aware methods to write code which produces the correct result on any platform."]]
+       [:h1 "Rip and tear"]
+       [:p "Faster makes prototyping SIMD code easy. Map, reduce, and collect using Faster' vector-aware methods to write code which produces the correct result on any platform."]]
       [code-box code/blast-off]]
      [:div.tutorial-part
       [:div.tutorial-text
-       [:h1 "Waste not"]
-       [:p "Cygnus compiles down to exactly what you would write by hand. Let LLVM handle the optimization so you can focus on writing good code."]]
+       [:h1 "Ungodly fast"]
+       [:p "Faster compiles down to exactly what you would write by hand. Let LLVM handle the optimization so you can focus on writing good code."]]
       [code-box code/simple-disassembly]]
      [:div.tutorial-part
       [:div.tutorial-text
-       [:h1 "Want not"]
-       [:p "Cygnus implements everything from simple arithmetic to the "
+       [:h1 "Fully loaded"]
+       [:p "Faster implements everything from simple arithmetic to the "
         [:a {:href "https://arxiv.org/abs/1611.07612"} "Muła-Kurz-Lemire Vector Popcnt"]
         ". If your architecture doesn't support an operation, a fast scalar alternative will be used."]]
       [code-box code/hamming-distance]]]
@@ -75,7 +75,7 @@
 (defui tutorial-intro [] {}
   [:div#intro.tutorial
    [:h1 "What is SIMD?"]
-   [:p "SIMD a method of computation which processes multiple pieces of simple data at once. Nearly every modern processor has some kind of SIMD extension, such as SSE and AVX on x86, NEON and ASIMD on ARM, MSA on MIPS, and Extension V on RISC-V. SIMD code can often process data much more quickly than regular code, but it can be difficult to write."]
+   [:p "SIMD is a method of computation which processes multiple pieces of simple data at once. Nearly every modern processor has some kind of SIMD extension, such as SSE and AVX on x86, NEON and ASIMD on ARM, MSA on MIPS, and Extension P on RISC-V. SIMD code can often process data much more quickly than regular code, but it can be difficult to write."]
    [:p "At the heart of SIMD is the idea of vectors. " [:em "Vectors are small contiguous collections of primitive types."] " For example, two adjacent u64s form a 128-bit vector. All SIMD architectures have large registers which can hold vectors. AVX uses 256-bit vector registers, while NEON uses 128-bit registers."]
    [:p "SIMD architectures define instructions which can perform a single operation on every element of a vector. For example, the AVX instruction " [:code "vpaddb dest, src1, src2"] " adds each element in src1 to the element at the same position in src2, and stores it at that position in dest. The power of such an instruction should be apparent: With a 256-bit vector of bytes, we can perform 32 additions in a single cycle!"]
    [:h2 "Why isn't everybody using SIMD?"]
@@ -88,7 +88,7 @@
     [:li "It's difficult to read and maintain"]
     [:li "The compiler can sometimes do it for you"]
     [:li "It often needs an equivalent scalar algorithm accompanying it"]]
-   [:p "Cygnus aims to address many of these issues, and make writing SIMD code worthwhile in more scenarios. Below is an example comparing Cygnus to equivalent SSE code, as well as a scalar equivalent for reference. Don't worry about the code yet, but notice the awkardness of the SIMD code compared to the scalar code. Without looking at the assert, would you be able to tell what the explicit SIMD code is doing at a glance?"]
+   [:p "Faster aims to address many of these issues, and make writing SIMD code worthwhile in more scenarios. Below is an example comparing Faster to equivalent SSE code, as well as a scalar equivalent for reference. Don't worry about the code yet, but notice the awkardness of the SIMD code compared to the scalar code. Without looking at the assert, would you be able to tell what the explicit SIMD code is doing at a glance?"]
    [code-box code/blast-off 1]
    [:h2 "When should I consider using SIMD?"]
    [:p "Despite SIMD's limitations, there are many conditions under which using SIMD is a good idea. Here are a few:"]
@@ -98,8 +98,8 @@
     [:li "Offloading to a GPU has too much overhead, or there is no GPU available"]
     [:li "You are operating on many primitive types at once"]
     [:li "Your algorithm is convergent, and avoids branching"]]
-   [:h2 "How can Cygnus help me use SIMD?"]
-   [:p "Cygnus alleviates many of the issues with writing explicit SIMD. With Cygnus, the list of reasons to not use SIMD shrinks considerably:"]
+   [:h2 "How can Faster help me use SIMD?"]
+   [:p "Faster alleviates many of the issues with writing explicit SIMD. With Faster, the list of reasons to not use SIMD shrinks considerably:"]
    [:ul
     [:li.strike "It isn't portable, even within the same architecture"]
     [:li.strike "It involves more edge cases, and more bugs"]
@@ -108,9 +108,9 @@
     [:li.strike "It's difficult to read and maintain"]
     [:li "The compiler can sometimes do it for you"]
     [:li.strike "It often needs an equivalent scalar algorithm accompanying it"]]
-   [:p "Cygnus makes your SIMD code portable. Cygnus contains SIMD implementations of many common vector operations for many architectures, and has a scalar backup if your target is incapable of performing the operation. Often, these scalar backups are able to make use of the superscalar architecture of modern CPUs, and are faster than a naiive solution. Write it once, run it everywhere."]
-   [:p "Improving ease of writing, reading, and maintaining SIMD code is Cygnus' core mission. Cygnus presents a memory-safe API which handles the many edge cases found in SIMD code, as well as an unsafe API for experts looking to squeeze every bit of performance out of their code while benefitting from Cygnus' breezy syntax and portability."]
-   [:p "Cygnus' scalar backups and highly efficient partial-aware iterator system eliminate the need for an accompanying scalar algorithm with your code. Write the vector algorithm, and all of your data can use it."]])
+   [:p "Faster makes your SIMD code portable. Faster contains SIMD implementations of many common vector operations for many architectures, and has a scalar backup if your target is incapable of performing the operation. Often, these scalar backups are able to make use of the superscalar architecture of modern CPUs, and are faster than a naiive solution. Write it once, run it everywhere."]
+   [:p "Improving ease of writing, reading, and maintaining SIMD code is Faster' core mission. Faster presents a memory-safe API which handles the many edge cases found in SIMD code, as well as an unsafe API for experts looking to squeeze every bit of performance out of their code while benefitting from Faster' breezy syntax and portability."]
+   [:p "Faster' scalar backups and highly efficient partial-aware iterator system eliminate the need for an accompanying scalar algorithm with your code. Write the vector algorithm, and all of your data can use it."]])
 
 (defn zor [x alt]
   (if (= x 0) alt x))
@@ -118,7 +118,7 @@
 (defui tutorial-vectors [] {:ctor "splat" :n 0 :m 0 :k 0 :vec-len 4}
   [:div#vectors.tutorial
    [:h1 "Vectors"]
-   [:p "Vectors can be thought of as short, contiguous arrays of a primitive type. Cygnus provides vectors named " [:code "u8s, i8s, u16s, i16s, u32s, i32s, f32s, u64s, i64s"] ", and " [:code "f64s"] ". Each vector contains some number of its respective primitive type. The number of elements in each vector is determined by your target platform."]
+   [:p "Vectors can be thought of as short, contiguous arrays of a primitive type. Faster provides vectors named " [:code "u8s, i8s, u16s, i16s, u32s, i32s, f32s, u64s, i64s"] ", and " [:code "f64s"] ". Each vector contains some number of its respective primitive type. The number of elements in each vector is determined by your target platform."]
    [:h2 "Constructors"]
    [:p "There are a few different ways to create a vector. " [:em "To ensure portability across platforms, constructing a vector with " [:code "new"] " isn't recommended."] " Using " [:code "u8s"] " as an example, here are the vector constructors:"]
    [:ul
@@ -202,16 +202,16 @@
 (defui tutorial-iterators [] {:vec-len 4 :coll-len 11 :default ""}
   [:div#iterators.tutorial
    [:h1 "Simple Iterators"]
-   [:p "Cygnus' iterator system aims to be as similar to Rust's as possible. To create a SIMD iterator, simply call " [:code "into_simd_iter"] ", " [:code "simd_iter"] ", or " [:code "simd_iter_mut"] " on a collection, depending on your mutability and ownership preferences. Like Rust's " [:code "into_iter"] ", " [:em [:code "into_simd_iter"] " allocates a vector on the heap"] "."]
+   [:p "Faster' iterator system aims to be as similar to Rust's as possible. To create a SIMD iterator, simply call " [:code "into_simd_iter"] ", " [:code "simd_iter"] ", or " [:code "simd_iter_mut"] " on a collection, depending on your mutability and ownership preferences. Like Rust's " [:code "into_iter"] ", " [:em [:code "into_simd_iter"] " allocates a vector on the heap"] "."]
    [:h2 "Using Simple Iterators"]
-   [:p "It's worth noting that like Rust's iterators, " [:em "Cygnus' iterators are lazy"] ". No work will be done until a function \"consumes\" the iterator. The simplest function which consumes iterators is " [:code "scalar_collect"] ". It, like Rust's " [:code "collect"] ", consumes all of the values of your iterator and stores them in a vector. If you'd like to avoid an allocation or aren't using the standard library, " [:code "scalar_fill"] " does the same thing to a slice."]
+   [:p "It's worth noting that like Rust's iterators, " [:em "Faster' iterators are lazy"] ". No work will be done until a function \"consumes\" the iterator. The simplest function which consumes iterators is " [:code "scalar_collect"] ". It, like Rust's " [:code "collect"] ", consumes all of the values of your iterator and stores them in a vector. If you'd like to avoid an allocation or aren't using the standard library, " [:code "scalar_fill"] " does the same thing to a slice."]
    [:p "We can use this to write a very fast copy function."]
    [code-box code/memcpy]
    [:p "You may have noticed that " [:code "simd_iter"] " and friends take an argument. This is a vector of " [:em "default values"] ", which fill the unused slots of a partially-filled vector. This is necessary to make your code as clean and as fast as possible ; we'll cover why in the next heading."]
    [:h2 "Vector Patterns"]
-   [:p "Many SIMD architectures can't easily load and store collections which don't evenly fit into SIMD vectors. For example, most versions of x86 have issues with collections whose lengths aren't multiples of 4. Often, this issue is worked around by providing a vector algorithm to process the majority of the data, and a scalar algorithm to process the remainder which won't fit into a vector. That's ugly and slow, though. Cygnus uses a special load/store pattern which lets you avoid providing a scalar algorithm and taking the associated performance hit."]
+   [:p "Many SIMD architectures can't easily load and store collections which don't evenly fit into SIMD vectors. For example, most versions of x86 have issues with collections whose lengths aren't multiples of 4. Often, this issue is worked around by providing a vector algorithm to process the majority of the data, and a scalar algorithm to process the remainder which won't fit into a vector. That's ugly and slow, though. Faster uses a special load/store pattern which lets you avoid providing a scalar algorithm and taking the associated performance hit."]
    [:p "All vectors except the last one are loaded as one would expect. However, " [:em "the last vector's contents are shifted all the way to the right, and contain a user-provided default value in the unfilled slots"] ". This is to ensure we can load all of the remaining data into the last vector in a single instruction on all platforms."]
-   [:p "Here's an interactive example showing how Cygnus will split a large, uneven collection into smaller vectors. Pay special attention to how the last (rightmost) vector behaves."]
+   [:p "Here's an interactive example showing how Faster will split a large, uneven collection into smaller vectors. Pay special attention to how the last (rightmost) vector behaves."]
    [:div.flex.figure
     [:input {:placeholder "Vector Size"
              :on-change #(swap! self assoc :vec-len (int (-> % .-target .-value)))}]
@@ -234,7 +234,7 @@
               [:div.collection-element (:default @self)]))
           (for [value chunk]
             [:div.collection-element value])])]])
-   [:p "Thankfully, using Cygnus' simple iterator system is much easier than understanding it - Cygnus handles all of the loading and storing for you, so you can usually pretend you're using a normal iterator. Cygnus knows not to store the elements of the vector which were filled with the default, but they do come into play when doing reductive or swizzling operations. We'll go in-depth on that later in this tutorial. Users who wish to avoid this system may also be interested in the Manual Iterators section."]])
+   [:p "Thankfully, using Faster' simple iterator system is much easier than understanding it - Faster handles all of the loading and storing for you, so you can usually pretend you're using a normal iterator. Faster knows not to store the elements of the vector which were filled with the default, but they do come into play when doing reductive or swizzling operations. We'll go in-depth on that later in this tutorial. Users who wish to avoid this system may also be interested in the Manual Iterators section."]])
 
 (defui tutorial-map [] {}
   [:div
@@ -250,7 +250,7 @@
      [:code ".flip() => "]
      (for [i [2 1 4 3]] [:div.collection-element i])]]
    [:p "If this happens, your code will not preserve the order of the collection,  " [:em " and might shuffle a default value into your result"] ". That's not necessarily a bad thing, but you should be aware of your code's specific invariants when using mapping operations, as many invariants of the classical " [:code "map"] " operation are not present in " [:code "simd_map"] "."]
-   [:p "Cygnus also lets you modify the number of elements in your collection via " [:code "simd_map"] " with casting operations. Functions like " [:code "be_u8s"] " or " [:code "be_i32s"] " are simple bitcasts which reinterpret the type of element within the vector. Upcasting and downcasting can also complicate things. In the above code sample, the input has four times as many elements as the output."]])
+   [:p "Faster also lets you modify the number of elements in your collection via " [:code "simd_map"] " with casting operations. Functions like " [:code "be_u8s"] " or " [:code "be_i32s"] " are simple bitcasts which reinterpret the type of element within the vector. Upcasting and downcasting can also complicate things. In the above code sample, the input has four times as many elements as the output."]])
 
 (defui tutorial-reduce [] {}
   [:div
@@ -259,7 +259,7 @@
    [:h2 "Vector Reduction"]
    [:p "Like Rust's " [:code "fold"] ", " [:code "simd_reduce"] " accepts an initial value of the accumulator a closure which takes the accumulator and an element of your iterator and returns the new accumulator." [:em " Your iterator's default value will usually be used"] " if you're not overwriting it in a " [:code "simd_map"] ", so make sure it doesn't unexpectedly alter the value of the accumulator. Usually, 0 or 1 is a good choice for a default value, depending on what you're doing."]
    [:h2 "Scalar Reduction"]
-   [:p "Vector reduction results in a vector, but the returned vector rarely has much meaning. You'll need to reduce the vector oncemore into a scalar. Cygnus provides specialized functions which can reduce a vector into a scalar using SIMD intrinsics like " [:code "sum"] " or " [:code "product"] ", but more complex operations can be performed with the versatile " [:code "scalar_reduce"] "."]])
+   [:p "Vector reduction results in a vector, but the returned vector rarely has much meaning. You'll need to reduce the vector oncemore into a scalar. Faster provides specialized functions which can reduce a vector into a scalar using SIMD intrinsics like " [:code "sum"] " or " [:code "product"] ", but more complex operations can be performed with the versatile " [:code "scalar_reduce"] "."]])
 
 (defui tutorial-collect [] {}
   [:div "Coming soon!"])
@@ -287,22 +287,22 @@
    {:name "Benchmarking" :page tutorial-benchmark}
    {:name "Cookbook" :page tutorial-cookbook}])
 
-(defpage tutorial {:page tutorial-reduce}
+(defpage tutorial {:page tutorial-intro}
   [:div
    [:header
     [:section#top
-     [:h1 [:a {:href "/"} "Cygnus"]]
+     [:h1 [:a {:href "/"} "FASTER"]]
      [:nav
       [:a {:href "/tutorial"} "Tutorial"]
       [:a {:href "https://docs.adamniederer.com"} "Docs"]
       [:a {:href "https://github.com/AdamNiederer/faster"} "Code"]]]
     [:section#banner
      [:h1 "Guide"]
-     [:p "Find you way around Cygnus without a star chart"]
+     [:p "Find you way around Faster without setting your hair on fire"]
      [:span.release "Updated for release 0.5.0"]]]
    [:main
     [:aside
-     [:h3 "The Cygnus Guide"]
+     [:h3 "The Faster Guide"]
      [:ol
       (forall [{name :name page :page} tutorial-pages]
         [:li.click {:on-click #(swap! self assoc :page page)
@@ -316,7 +316,7 @@
   (reset! state/page index))
 
 (defn mount-root []
-  (accountant/dispatch-current! true) ; For figwheel
+  (accountant/dispatch-current!) ; For figwheel
   (reagent/unmount-component-at-node (.getElementById js/document "app"))
   (reagent/render [state/current-page] (.getElementById js/document "app")))
 
@@ -331,5 +331,5 @@
     (fn [path]
       (secretary/locate-route path))
     :reload-same-path? true})
-  (accountant/dispatch-current! true)
+  (accountant/dispatch-current!)
   (mount-root))

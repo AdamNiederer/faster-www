@@ -51,7 +51,7 @@
                         {:on-jsload "cygnus-www.core/mount-root"
                          :open-urls ["http://localhost:3449/index.html"]}}
                        :release
-                       {:source-paths ["src" "env/prod"]
+                       {:source-paths ["src" "src/cygnus_www" "env/prod"]
                         :compiler
                         {:output-to "public/js/app.js"
                          :optimizations :advanced

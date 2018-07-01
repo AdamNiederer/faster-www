@@ -1,6 +1,6 @@
-(ns cygnus-www.new.prod
+(ns cygnus-www.prod
   (:require
-    [cygnus-www.new.core :as core]))
+    [cygnus-www.core :as core]))
 
 ;;ignore println statements in prod
 (set! *print-fn* (fn [& _]))
