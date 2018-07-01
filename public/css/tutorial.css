@@ -1,0 +1,59 @@
+.blue {
+  background-color: #0d47a1; }
+
+.red {
+  background-color: #a00c47; }
+
+.green {
+  background-color: #47a00c; }
+
+.purple {
+  background-color: #650ca0; }
+
+.orange {
+  background-color: #a0650c; }
+
+.teal {
+  background-color: #0ca096; }
+
+.yellow {
+  background-color: #FFD54F; }
+
+.page-root#tutorial section#banner {
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem 0 4rem; }
+  .page-root#tutorial section#banner h1 {
+    font-family: "Permanent Marker", "Helvetica Neue", Verdana, Helvetica, Arial, cursive;
+    font-size: 3rem; }
+  .page-root#tutorial section#banner p {
+    padding: 1em 1em 0;
+    font-size: 1rem; }
+
+.page-root#tutorial main {
+  display: flex; }
+  .page-root#tutorial main aside {
+    flex-basis: 20rem;
+    padding: 2em;
+    margin-left: 8em; }
+    .page-root#tutorial main aside h3 {
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 1rem; }
+    .page-root#tutorial main aside li {
+      border-left: 2px #686868 solid;
+      padding: 0em 1em;
+      margin-bottom: 0.5em; }
+      .page-root#tutorial main aside li.active {
+        border-left-color: #eceff1; }
+  .page-root#tutorial main section.tutorial {
+    padding: 2em;
+    flex-basis: 60em; }
+    .page-root#tutorial main section.tutorial h1, .page-root#tutorial main section.tutorial h2, .page-root#tutorial main section.tutorial h3, .page-root#tutorial main section.tutorial p, .page-root#tutorial main section.tutorial ul, .page-root#tutorial main section.tutorial ol, .page-root#tutorial main section.tutorial div.code-box, .page-root#tutorial main section.tutorial div.figure {
+      margin-bottom: 1rem; }
+    .page-root#tutorial main section.tutorial h1 {
+      font-size: 2rem;
+      font-family: "Permanent Marker", "Helvetica Neue", Verdana, Helvetica, Arial, cursive;
+      letter-spacing: 1px; }
+    .page-root#tutorial main section.tutorial h2 {
+      font-size: 1.5rem; }

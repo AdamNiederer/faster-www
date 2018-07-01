@@ -1,0 +1,42 @@
+@import "fonts.sass"
+@import "colors.sass"
+
+.page-root#tutorial
+  section#banner
+    margin: 0 auto
+    text-align: center
+    padding: 2rem 0 4rem
+    h1
+      font-family: $header-font-stack
+      font-size: 3rem
+    p
+      padding: 1em 1em 0
+      font-size: 1rem
+
+  main
+    display: flex
+    aside
+      flex-basis: 20rem
+      padding: 2em
+      margin-left: 8em
+      h3
+        text-align: center
+        font-size: 1rem
+        margin-bottom: 1rem
+      li
+        border-left: 2px $grey-light solid
+        padding: 0em 1em
+        margin-bottom: 0.5em
+        &.active
+          border-left-color: $white
+    section.tutorial
+      padding: 2em
+      flex-basis: 60em
+      h1, h2, h3, p, ul, ol, div.code-box, div.figure
+        margin-bottom: 1rem
+      h1
+        font-size: 2rem
+        font-family: $header-font-stack
+        letter-spacing: 1px
+      h2
+        font-size: 1.5rem

@@ -1,0 +1,78 @@
+@import "fonts.sass"
+@import "colors.sass"
+
+.page-root#index
+  .icon
+    margin: auto auto
+    margin-top: 1rem
+    i
+      font-size: 8em
+      text-align: center
+
+  header
+    height: 50rem
+
+  section#banner
+     margin: 0 auto
+     text-align: center
+     padding-top: 2rem
+     h1
+       font-size: 3rem
+       font-family: $header-font-stack
+       letter-spacing: -1px
+     p
+       padding: 2rem 2rem 2rem
+       font-size: 1rem
+     section#banner-features
+       padding-top: 2rem
+       display: flex
+       justify-content: center
+       div
+         flex-grow: 1
+         padding: 0rem 2rem
+         max-width: 20rem
+         h2
+           font-family: $header-font-stack
+           font-size: 2rem
+           padding-bottom: 0.5rem
+
+  main
+    section#tutorial
+      max-width: 70%
+      margin: 0 auto
+      padding-top: 4rem
+      .tutorial-part
+        display: flex
+        margin-bottom: 6em
+        align-items: flex-start
+      div.tutorial-text
+        flex-basis: 50%
+      h1
+        font-family: $header-font-stack
+        margin-bottom: 1em
+      p
+        padding-right: 1em
+        line-height: 2
+        font-size: 1.20em
+    section#appeal
+      background: linear-gradient(90deg, $yellow 5em, $red 5em, $red 6em, $yellow 6em, $yellow 7em, $red 7em, $red 8em, $yellow 8em)
+      padding: 4em
+      text-align: center
+      margin: 4rem auto 0
+      color: black
+      h1
+        font-family: $header-font-stack
+        margin-bottom: 1em
+      .button
+        font-family: $header-font-stack
+        font-weight: bold
+        border-radius: 4px
+        border: 3px solid black
+        padding: 0.5em 1em
+        margin: 2em
+        color: black
+        text-decoration: none
+        font-size: 1.2rem
+        &.em
+          background: black
+          color: $yellow
