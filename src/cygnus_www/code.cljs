@@ -1,7 +1,7 @@
 (ns cygnus-www.code)
 
 (def blast-off
-  [{:name "Cygnus"
+  [{:name "Faster"
     :body "let inc = [1, 2, 3, 4, 5]
     .simd_iter(u8s(0))
     .simd_map(|v| v + 1)
@@ -35,7 +35,7 @@ assert_eq!(inc, vec![2, 3, 4, 5, 6]);"}
 assert_eq!(inc, vec![2, 3, 4, 5, 6]);"}])
 
 (def simple-disassembly
-  [{:name "Cygnus"
+  [{:name "Faster"
     :body "pub fn cksum() -> u32 {
     [1u8; 900].simd_iter(u8s(0))
         .simd_map(|s| {
